@@ -1,0 +1,201 @@
+<app-alert *ngIf="exist" [alert]=alertState ></app-alert>
+<app-header></app-header>
+<app-sidebar [active]="'x'"></app-sidebar>
+<div class="content-wrapper">
+  <div class="container-fluid mt-0 ">
+    <section class="control-panel p-3">
+      <div class="filters d-flex flex-column flex-md-row align-items-start align-items-md-center">
+        <div class="filtername"><i class="fas fa-bars"></i> التقارير</div>
+        <button *ngIf="!userConneted?.twitter_account_id;else connect" (click)="signInTweeter()" class="btn btn-primary apply-button me-md-2 mb-2 mb-md-0 text-dark">اتصال</button>
+        <ng-template #connect>
+          <select style="width: 160px;" (change)="selectedChoice($event)" class="form-select me-md-2 mb-2 mb-md-0">
+            <option value="">قائمة الحسابات</option>
+            <option    *ngFor="let account of accounts; let i = index" value="{{account?.account_id}}">
+               {{ account?.name }}
+           </option>
+          </select>
+          <button  (click)="signOutTweeter()" class="btn btn-primary apply-button me-md-2 mb-2 mb-md-0 text-dark">قطع الاتصال</button>
+          <button  (click)="refreshAccounts()" class="btn btn-primary apply-button me-md-2 mb-2 mb-md-0 text-dark text-nowrap">تحديث الحسابات</button>
+        </ng-template>
+      </div>
+      <div *ngIf="selectedAccountId" class="d-flex justify-content-end flex-wrap align-items-end mt-3 mt-md-0">
+
+        <div class="form-group mx-1">
+          <label for="start-date" class="form-label">النوع</label>
+          <select class="form-select m-1 mb-2 mb-md-0"  (change)="onChangeType()" [(ngModel)]="granularity">
+            <option value="TOTAL">الكل</option>
+            <option value="DAY">اليوم</option>
+            <option value="HOUR">الساعة</option>
+          </select>
+        </div>
+
+        <div class="form-group mx-1">
+          <label for="start-date" class="form-label">تاريخ البداية</label>
+          <input
+            type='date'
+            id="start-date"
+            class="form-control"
+            [(ngModel)]="ds"
+            (change)="onDateChange()"
+          />
+        </div>
+
+        <div class="form-group mx-1">
+          <label for="end-date" class="form-label">تاريخ النهاية</label>
+          <input
+            type='date'
+            id="end-date"
+            class="form-control"
+            [(ngModel)]="de"
+            [min]="ds"
+            [max]="granularity === 'HOUR' ? ds : null"
+          />
+        </div>
+
+        <button (click)="search()" type="button" class="btn btn-sm" style="background-color: rgb(17, 212, 189); border:none">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+
+      </div>
+
+    </section>
+
+
+    <div  class="container-fluid mt-4 ">
+
+
+      <div class="row text-center d-flex align-items-stretch">
+        <div class="col-md-3 mb-4">
+          <div class="card card-custom p-3">
+            <div class="card-body d-flex align-items-center justify-content-center" style="height:182px;overflow: visible">
+              <img class="x-img" src="/assets/pic/x.png" alt="Instagram">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-4 mt-0">
+          <div class="card card-custom">
+            <div class="card-header">
+              <div class="spaced-element">
+                <h5  class="card-title mb-0">قائمة الحملات</h5>
+           </div>
+            </div>
+            <div class="card-body">
+              <!-- Campaigns Table -->
+              <table class="table text-center">
+                <thead>
+                <tr>
+                  <th scope="col">اسم الحملة</th>
+                  <th scope="col">تاريخ الإنشاء</th>
+                  <th scope="col">الميزانية</th>
+                  <th scope="col">حالة الحملة</th>
+                  <th scope="col">التفاصيل</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let campaign of campaigns; let i = index">
+                  <td  class="ellipsis" title="{{ campaign.name }}">{{ campaign.name }}</td>
+                  <td>{{ campaign.create_at | date: 'dd/MM/yyyy hh:mm' }}</td>
+                  <td>{{ campaign.total_budget_amount_local_micro/100000 }} $</td>
+                  <td>{{ campaign.entity_status !== "PAUSED" ? 'مفعلة' : 'غير مفعلة' }}</td>
+                  <td class="center-element">
+                    <button class="btn btn-sm btn-info center-element" (click)="showDetailsOfCampaign(campaign.id, campaign.create_at)">
+                      <i class="mdi--chart-line"></i>
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+
+     </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="card card-custom p-3">
+            <div class="d-flex justify-content-between">
+              <p class="mb-0 text-dark col-md-6 fw-9 stat-text">نسبة المبيعات لكل 1000 زائر</p>
+              <!--    <a  class="report-link">رؤية التقرير</a>-->
+            </div>
+            <h2 class="percentage3 x-h2"> % {{ this.engagementPerThousandImpressions }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container-fluid3 p-4">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="card  card-margin">
+          <div class="card-body">
+            <h5 class="card-title text-center">نسبة الزوار مقارنة بالمبيعات</h5>
+            <div class="d-flex justify-content-center align-items-center" style="min-height: 300px;">
+              <div class="chart-container" style="width: 100%; height: 100%;">
+                <div>
+
+                  <app-genaral-chart
+                    [chartType]="'bar'"
+                    [data]="[engagementPerImpressions?.impressions,engagementPerImpressions?.conversion]||[]"
+                    [legend]="['الزوار','المبيعات']"
+                    [labels]="engagementPerImpressions?.labels||[]"
+                    [backgroundColorChoice]="[6,7]"
+                    [fillChoice]="false"
+                    [optionsChoice]="1">
+                  </app-genaral-chart>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card  card-margin">
+          <div class="card-body">
+            <h5 class="card-title text-center">نسب الزوار النقرات التفاعل</h5>
+            <div class="chart-container" style="height:300px;">
+              <div>
+                <app-genaral-chart
+                  [chartType]="'polarArea'"
+                  [data]="[[clicks[clicks.length-1],impressions[impressions.length-1],engagements[engagements.length-1]]]"
+                  [labels]="['النقرات','الزوار','التفاعل']"
+                  [backgroundColorChoice]="[1]"
+                  [borderColorChoice]="[1]"
+                  [optionsChoice]="3">
+                </app-genaral-chart>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 p-3 revenu container-fluid3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-end">نسبة الزوار و التفاعل</h5>
+        <div class="d-flex justify-content-between align-items-center" style="min-height: 300px;">
+          <div class="chart-container" style="width: 100%; height: 100%;">
+            <div style="height: 300px;">
+              <app-genaral-chart
+                [legend]="['التفاعل','الزوار']"
+                [chartType]="'line'"
+                [data]="[engagements,impressions]"
+                [labels]="labels"
+                [backgroundColorChoice]="[4,5]"
+                [fillChoice]="true"
+                [borderColorChoice]="[4,5]"
+                [optionsChoice]="1">
+              </app-genaral-chart>
+            </div>
+          </div>
+        </div>
+        <div id="chart-legend" class="legend-container"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<!-- src/app/components/user/user.component.html -->
+<div style="display: flex;justify-content: center;align-items: center;flex-direction: row;gap: 10px">
+  <div style="display: flex;justify-content: center;align-items: center;flex-direction: row;gap: 10px">
+    <button class="btn btn-info" (click)="getUserInfo()">معلومات المستخدم</button>
+    <!--      <button class="btn btn-info" (click)="getAds()">user ads</button>-->
+  </div>
+
+  <div *ngIf="user" class="d-flex flex-column mt-4 fs-6 justify-content-center align-items-center">
+    <img src="{{user.avatar_url}}" alt="avatar" width="80" height="80"/>
+  </div>
+</div>
+
+

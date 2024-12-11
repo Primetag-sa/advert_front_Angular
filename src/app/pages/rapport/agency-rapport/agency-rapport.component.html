@@ -1,0 +1,247 @@
+<app-header></app-header>
+<app-sidebar [active]="'rapport'"></app-sidebar>
+<div class="content-wrapper">
+  <div class="container-fluid mt-0 ">
+            <section class="control-panel">
+                <div class="filters d-flex flex-column flex-md-row align-items-start align-items-md-center">
+                    <div class="filtername"><i class="fas fa-bars"></i> التقارير</div>
+                    <select class="form-select me-md-2 mb-2 mb-md-0">
+                        <option>التقارير</option>
+                    </select>
+                    <select class="form-select me-md-2 mb-2 mb-md-0">
+                        <option>تاريخ التقارير</option>
+                    </select>
+                    <select class="form-select me-md-2 mb-2 mb-md-0">
+                        <option>التقارير</option>
+                    </select>
+                    <button class="btn btn-primary apply-button me-md-2 mb-2 mb-md-0 text-dark">اتصال</button>
+                </div>
+              <div  class="d-flex justify-content-end flex-wrap align-items-end mt-3 mt-md-0">
+
+
+                <div class="form-group mx-1">
+                  <label for="start-date" class="form-label">تاريخ البداية</label>
+                  <input
+                    type='date'
+                    id="start-date"
+                    class="form-control"
+                    [(ngModel)]="ds"
+                    (change)="onDateChange()"
+                  />
+                </div>
+
+                <div class="form-group mx-1">
+                  <label for="end-date" class="form-label">تاريخ النهاية</label>
+                  <input
+                    type='date'
+                    id="end-date"
+                    class="form-control"
+                    [(ngModel)]="de"
+                    [min]="ds"
+                  />
+                </div>
+
+                <button (click)="search()" type="button" class="btn btn-sm" style="background-color: rgb(17, 212, 189); border:none">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+
+              </div>
+
+            </section>
+            <div class="container-fluid">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <div class="card card-custom pe-1">
+                            <div class="card-body">
+                                <h5 class="card-title">الأرباح الإجمالية</h5>
+                                <p dir="ltr" class="card-text1">{{ earnings.toFixed(2) }} $</p>
+                                <p  *ngIf="rate_earnings>=0" class="text-dark" style="font-size:16px;"><i class="fa-solid fa-arrow-trend-up"></i>
+                                    ارتفاع الأرباح بنسبة<span dir="ltr" class="text-green mr-5">{{this.rate_earnings.toFixed(2)}}%</span></p>
+                                <p *ngIf="rate_earnings<0" class="text-dark" style="font-size:16px;"><i
+                                  class="fa-solid fa-arrow-trend-down"></i>
+                                  انخفاض الأرباح بنسبة<span dir="ltr" class="text-red mr-5">{{this.rate_earnings.toFixed(2)}}%</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-custom pe-1">
+                            <div class="card-body">
+                                <h5 class="card-title">الطلبات</h5>
+                                <p class="card-text1"> {{conversion}} طلبية  </p>
+                              <p  *ngIf="rate_conversion>=0" class="text-dark" style="font-size:16px;"><i
+                                class="fa-solid fa-arrow-trend-up"></i>
+                                ارتفاع الطلبات بنسبة<span dir="ltr" class="text-green mr-5">{{ rate_conversion }}%</span></p>
+                                <p *ngIf="rate_conversion<0" class="text-dark" style="font-size:16px;"><i
+                                        class="fa-solid fa-arrow-trend-down"></i>
+                                    انخفاض الطلبات بنسبة<span dir="ltr" class="text-red mr-5">{{ rate_conversion }}%</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-custom pe-1">
+                            <div class="card-body">
+                                <h5 class="card-title">عدد الزوار الإجمالي</h5>
+                                <p class="card-text1">{{impressions}} زائر</p>
+                            </div>
+                        </div>
+                    </div>
+                  <div class="col-md-3">
+                    <div class="card card-custom pe-1">
+                      <div class="card-body">
+                        <h5 class="card-title">معدل تحويل المتجر</h5>
+                        <p class="card-text1">{{impression_rate_100_visitors.toFixed(2)}} % <span class="text-muted " style="font-size: 14px;">لكل 100
+                                        زائر</span></p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row my-4 g-0">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">إحصائيات الحملات الإعلانية</h5>
+                                <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                                    <div class="chart-container" style="width: 100%; height: 100%;">
+                                        <canvas id="adCampaignChart" style="width: 100%; height: 100%;"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card card2-section2">
+                            <div class="card-body">
+                                <h5 class="card-title">نسبة الزوار</h5>
+                                <div class="chart-container" style="height:300px;">
+                                    <canvas id="visitorsChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row my-4 g-0">
+                    <div class="col-md-6 ">
+                        <div class="card" style="height: 350px;">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">إحصائيات المنصات</h5>
+                                <div class="chart-container">
+                                    <table class="table text-muted text-center">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">الإسم</th>
+                                                <th scope="col">المنصة</th>
+                                                <th scope="col">عدد المبيعات</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let element of accounts">
+                                                <td>{{ element["agent"].id }}</td>
+                                                <td>{{ element["agent"].name }}</td>
+                                                <td>{{ element["platform"] }}</td>
+                                                <td>{{ number_purchase!==undefined?number_purchase[element["agent"].id]:0 }} $</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pr-3">
+                        <div class="card" style="height: 350px;">
+                            <div class="card-body">
+                                <h5 class="card-title">إحصائيات العملاء</h5>
+                                <div class="chart-container">
+                                    <canvas id="customerStatsChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid  mt-5">
+          <div class="container-fluid">
+            <h5 class="card-title text-end fw-bold mb-4 mr-10">إحصائيات مواقع التواصل الإجتماعية</h5>
+
+            <div class="row g-0">
+                <div class="col-md-3">
+                    <div class="card card-custom pe-1">
+                        <div class="card-body d-flex  justify-content-between">
+                            <div>
+                                <h6 class="mt-3">سناب شات</h6>
+                                <div class="stat">2000 زائر</div>
+                            </div>
+                            <div class="iconplatform">
+                                <i class="fab fa-snapchat align-items-end" style="color: #FFFC00; font-size:2em;"></i>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center percentage text-success mt-2">
+                            <p class="text-dark" style="font-size:16px;"><i class="fa-solid fa-arrow-trend-up"></i>
+                                ارتفاع الزوار بنسبة<span class="text-green">1.8%</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card card-custom pe-1">
+                        <div class="card-body d-flex  justify-content-between">
+                            <div>
+                                <h6 class="mt-3">تيك توك</h6>
+                                <div class="stat">5200 زائر</div>
+                            </div>
+                            <div class="iconplatform">
+                                <i class="fab fa-tiktok icon" style="color: #000000; font-size:2em;"></i>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center percentage text-danger mt-2">
+                            <p class="text-dark" style="font-size:16px;"><i class="fa-solid fa-arrow-trend-down"></i>
+                                انخفاض عدد الزوار بنسبة<span class="text-red mr-5">1.8%</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card card-custom pe-1">
+                        <div class="card-body d-flex  justify-content-between">
+                            <div>
+                                <h6 class="mt-3">إنستغرام</h6>
+                                <div class="stat">2700 زائر</div>
+                            </div>
+                            <div class="iconplatform">
+                                <i class="fab fa-instagram icon" style="color: #E1306C;"></i>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center percentage text-success mt-2">
+                            <p class="text-dark" style="font-size:16px;"><i class="fa-solid fa-arrow-trend-up"></i>
+                                ارتفاع الزوار بنسبة<span class="text-green mr-5">1.8%</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card card-custom pe-1">
+                        <div class="card-body d-flex  justify-content-between">
+                            <div>
+                                <h6 class="mt-3">فيس بوك</h6>
+                                <div class="stat">1000 زائر</div>
+                            </div>
+                            <div class="iconplatform">
+                                <i class="fab fa-facebook icon" style="color: #1877F2;"></i>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center percentage text-success mt-2">
+                            <p class="text-dark" style="font-size:16px;"><i class="fa-solid fa-arrow-trend-up"></i>
+                                ارتفاع الزوار بنسبة<span class="text-green mr-5">1.8%</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+</div>

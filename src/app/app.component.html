@@ -1,0 +1,9 @@
+<div *ngIf="notification$ | async as message" id="alert-container" class="position-fixed top-0 end-0 p-3" style="z-index: 1050;">
+    <div  class="alert alert-danger alert-dismissible fade show alert-timeline" role="alert">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <h6>{{message}}</h6>
+      <div class="progress-timeline-danger"></div>
+    </div>
+</div>
+
+<router-outlet />

@@ -1,0 +1,66 @@
+<app-header></app-header>
+<app-sidebar [active]="'settings'"></app-sidebar>
+<div class="content-wrapper">
+  <div class="container-fluid mt-0 p-4">
+    <div class="form-container">
+      <form class="border-top border-muted pt-3 mt-3" (ngSubmit)="onSubmit()"  enctype="multipart/form-data">
+      <div class="form-title d-flex justify-content-between align-items-center flex-column flex-md-row">
+        <div class="d-flex align-items-center">
+          <h5 class="text-muted mb-0">إدارة العملاء</h5>
+        </div>
+        <div class="d-flex flex-column flex-md-row">
+          <button type="submit" class="btn me-3 text-light" style="background-color: #363861;">حفظ
+            المعلومات</button>
+        </div>
+      </div>
+      <p class="p-3 text-end">شعار العلامة التجارية</p>
+
+      <div class="d-flex mb-3">
+        <div class="upload-box d-flex flex-column align-items-center border p-4">
+          <img [src]="image" alt="Logo" class="img-fluid rounded-2">
+        </div>
+        <div class="upload-box d-flex flex-column align-items-center border p-4 mr-10">
+          <i class="fas fa-upload fa-2x mb-2"></i>
+          <span>حمل الصورة</span>
+          <input type="file" (change)="onFileChange($event)" class="form-control mt-2"
+            style="opacity: 0; position: absolute; left: 0; top: 0; bottom: 0; right: 0;">
+        </div>
+      </div>
+        <div class="row mt-3 mb-3">
+          <div class="col-lg-12">
+            <label for="email" class="form-label">البريد الإلكتروني</label>
+            <input type="email" [(ngModel)]="email" name="email" class="form-control" id="email" placeholder="البريد الإلكتروني">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-lg-6">
+            <label for="name" class="form-label">الإسم الكامل</label>
+            <input type="text" [(ngModel)]="fullName" name="fullName" class="form-control" id="fullName" placeholder="الإسم الكامل">
+          </div>
+          <div class="col-lg-6">
+            <label for="phone" class="form-label">رقم الهاتف</label>
+            <input type="text" [(ngModel)]="phone" name="phone" class="form-control" id="phone" placeholder="رقم الهاتف">
+          </div>
+        </div>
+        <div class="row mb-3">
+
+          <!-- <div class="col-lg-6">
+            <label for="address" class="form-label">العنوان</label>
+            <input type="text" [(ngModel)]="address" name="address" class="form-control" id="address" placeholder="العنوان">
+          </div> -->
+        </div> <!-- Missing closing div for row mb-3 -->
+        <div class="row mb-3">
+
+          <div class="col-lg-6">
+            <label for="address" class="form-label">كلمة السر</label>
+            <input type="password" [(ngModel)]="password" class="form-control" id="password" placeholder="كلمة السر">
+          </div>
+          <div class="col-lg-6">
+            <label for="address" class="form-label">كلمة السر</label>
+            <input type="password" [(ngModel)]="confirmPassword" class="form-control" id="confirmPassword" placeholder="كلمة السر">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

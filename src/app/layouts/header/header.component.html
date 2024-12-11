@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light nav-margin">
+  <div class="container-fluid">
+      <form class="d-flex search-bar col-md-4">
+          <input class="form-control me-2" type="search" placeholder="🔍ابحث عن ..." aria-label="Search">
+      </form>
+      <ul class="navbar-nav ms-auto d-flex w-100 justify-content-between align-items-center">
+          <li class="nav-item">
+              <div class="notification-container me-5">
+                  <button class="notification-button">
+                      <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0511 0.0881958C7.75816 0.0881958 5.83187 1.81231 5.57865 4.09126L4.52344 13.5882H1.52344C0.69501 13.5882 0.0234375 14.2598 0.0234375 15.0882V16.5882C0.0234375 17.4166 0.69501 18.0882 1.52344 18.0882H22.5234C23.3519 18.0882 24.0234 17.4166 24.0234 16.5882V15.0882C24.0234 14.2598 23.3519 13.5882 22.5234 13.5882H19.5234L18.4682 4.09125C18.215 1.81231 16.2887 0.0881958 13.9957 0.0881958H10.0511Z" fill="#1F1F51"/>
+                          <rect opacity="0.3" x="9.02344" y="19.5882" width="6" height="6" rx="2.25" fill="#FF0000"/>
+                      </svg>
+                      <!-- <span class="notification-count">5</span> -->
+            </button>
+              </div>
+          </li>
+          <!-- <li class="nav-item profile-dropdown">
+              <a class="nav-link custom-dropdown-toggle dropdown-toggle d-flex align-items-end"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="assets/images/profile.png" alt="Profile" class="rounded-circle" width="40" height="40">
+                  <span class="profile-name pe-1">
+                      <h5 class="mb-0 d-inline text-dark" style="font-size: 14px;">الاسم الكامل</h5>
+                      <i class="fas fa-chevron-down icon-circle p-1 text-dark"></i>
+                      <p class="mb-0 text-dark text-end" style="font-size: 12px;">مسير</p>
+                  </span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" >الملف الشخصي</a>
+                  <a class="dropdown-item" >الإعدادات</a>
+                  <a class="dropdown-item" >تسجيل الخروج</a>
+              </div>
+          </li> -->
+          <li class="nav-item dropdown">
+            <a class="nav-link custom-dropdown-toggle dropdown-toggle d-flex align-items-end"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img [src]="image" alt="Profile" class="rounded-circle" width="40" height="40">
+              <span class="profile-name pe-1">
+                <h5 class="mb-0 d-inline text-dark" style="font-size: 14px;margin-left: 5px">{{ name }}</h5>
+                <i class="fas fa-chevron-down icon-circle p-1 text-dark"></i>
+                <p class="mb-0 text-dark text-end" style="font-size: 12px;">{{ role }}</p>
+              </span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="/settings/profile">الملف الشخصي</a></li>
+              <!-- <li><a class="dropdown-item" >الإعدادات</a></li> -->
+              <li><a class="dropdown-item" (click)="logout()">تسجيل الخروج</a></li>
+            </ul>
+          </li>
+      </ul>
+  </div>
+</nav>

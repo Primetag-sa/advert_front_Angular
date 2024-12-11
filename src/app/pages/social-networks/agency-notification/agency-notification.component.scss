@@ -1,0 +1,92 @@
+.notifications-list {
+  // max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.notifications-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.notification-card {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s;
+}
+
+.notification-card:hover {
+  transform: translateY(-5px);
+}
+
+.notification-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.client-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.client-details {
+  flex-grow: 1;
+}
+
+.client-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.notification-date {
+  margin: 0;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.notification-id {
+  font-size: 14px;
+  color: #6c757d;
+  text-align: right;
+}
+
+.notification-body {
+  font-size: 16px;
+  color: #343a40;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
+}
+
+.pagination span {
+  margin: 0 10px;
+  font-size: 16px;
+}

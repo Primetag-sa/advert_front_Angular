@@ -1,0 +1,16 @@
+<!-- Conteneur pour les alertes -->
+<div id="alert-container" class="position-fixed top-0 end-0 p-3" style="z-index: 1050;">
+  <!-- Alerte avec barre de progression -->
+  <div *ngIf="alert;else failure" class="alert alert-success alert-dismissible fade show alert-timeline" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <h6>تم الاتصال بالشبكة الاجتماعية بنجاح</h6>
+   <div class="progress-timeline-success"></div>
+  </div>
+  <ng-template #failure>
+    <div  class="alert alert-danger alert-dismissible fade show alert-timeline" role="alert">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <h6>حدثت مشكلة عند الاتصال بالشبكة الاجتماعية </h6>
+      <div class="progress-timeline-danger"></div>
+    </div>
+  </ng-template>
+</div>

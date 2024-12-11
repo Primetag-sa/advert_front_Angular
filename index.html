@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تجريب البكسل advert.sa</title>
+</head>
+<body>
+    
+
+    <script>
+        (function() {
+            var clientId = '135PuQItLFq9UvWndKivhBIz';
+            var trackingUrl = 'https://advert.sa/api/track-event';
+            
+            console.log('Tracking Script Loaded', { clientId, trackingUrl });
+
+            function collectData(extraData = {}) {
+                return {
+                    client_id: clientId,
+                    url: window.location.href,
+                    title: document.title,
+                    referrer: document.referrer,
+                    user_agent: navigator.userAgent,
+                    screen_width: window.screen.width,
+                    screen_height: window.screen.height,
+                    timestamp: new Date().toISOString(),
+                    ...extraData
+                };
+            }
+
+            function sendTrackingData(data) {
+                console.log('Sending Tracking Data:', data);
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', trackingUrl, true);
+                xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+                xhr.onload = function() {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        console.log('Tracking data sent successfully:', data);
+                    } else {
+                        console.error('Failed to send tracking data:', xhr.status, xhr.responseText);
+                    }
+                };
+
+                xhr.onerror = function() {
+                    console.error('Network error while sending tracking data:', data);
+                };
+
+                xhr.send(JSON.stringify(data));
+            }
+
+            function handleClick(event) {
+                var target = event.target;
+                var data = collectData({
+                    clicked_element: target.tagName,
+                    clicked_text: target.innerText.trim()
+                });
+                sendTrackingData(data);
+            }
+
+            function debounce(func, delay) {
+                let timeoutId;
+                return function(...args) {
+                    if (timeoutId) {
+                        clearTimeout(timeoutId);
+                    }
+                    timeoutId = setTimeout(() => {
+                        func.apply(this, args);
+                    }, delay);
+                };
+            }
+
+            document.addEventListener('click', debounce(handleClick, 300));
+
+            window.addEventListener('beforeunload', function() {
+                var data = collectData();
+                setTimeout(() => sendTrackingData(data), 100);
+            });
+
+            setTimeout(() => {
+                var data = collectData();
+                sendTrackingData(data);
+            }, 100);
+        })();
+        </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<app-header></app-header>
+<app-sidebar [active]="'notification'"></app-sidebar>
+<div class="content-wrapper">
+  <div class="container-fluid mt-5 p-4">
+      <section class="control-panel">
+          <div class="filters d-flex flex-column flex-md-row align-items-start align-items-md-center">
+              <div class="filtername"><i class="fas fa-bars"></i> الاشعارات</div>
+              <select class="form-select me-md-2 mb-2 mb-md-0">
+                  <option>عدد الطلبات</option>
+              </select>
+              <select class="form-select me-md-2 mb-2 mb-md-0">
+                  <option>محتوى الاشعار</option>
+                  <option>القناة</option>
+              </select>
+              <select class="form-select me-md-2 mb-2 mb-md-0">
+                  <option>الفعالة</option>
+              </select>
+              <button class="btn btn-primary apply-button me-md-2 mb-2 mb-md-0 text-dark">اتصال</button>
+          </div>
+          <div class="d-flex justify-content-end flex-wrap align-items-start align-items-md-center mt-3 mt-md-0">
+              <button type="submit" class="btn btn-dark me-md-2 mb-2 mb-md-0"
+                  style="background-color: rgb(17, 212, 189); border:none"><i class="fa-solid fa-notification"></i>
+                  تصفية الكل كمقروء</button>
+          </div>
+      </section>
+      <section class="notifications-list">
+        <div class="notifications-container">
+
+            <div class="notification-card" *ngFor="let item of notifications">
+                <div class="notification-header">
+                    <img [src]="item.sender.avatar" class="client-picture" alt="Client Logo">
+                    <div class="client-details">
+                        <h4 class="client-name">{{ item.sender.name }}</h4>
+                        <p class="notification-date">{{ item.created_at }}</p>
+                    </div>
+                    <div class="notification-id">
+                        <span>#{{ item.id }}</span>
+                    </div>
+                </div>
+                <div class="notification-body">
+                    <p>{{ item.message }}</p>
+                </div>
+            </div>
+            <!-- Repeat .notification-card for each notification -->
+        </div>
+        <!--<div *ngIf="notifications.length>1" class="pagination">
+            <button onclick="prevPage()" id="prev-button">السابق</button>
+            <span id="page-info"></span>
+            <button onclick="nextPage()" id="next-button">التالي</button>
+        </div>-->
+    </section>
+
+  </div>
+
+
+
+
+</div>

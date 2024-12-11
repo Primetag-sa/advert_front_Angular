@@ -1,0 +1,61 @@
+/* Ajout d'un effet de timeline sur l'alerte */
+.alert-timeline {
+  position: relative;
+  padding-right: 40px; /* pour laisser la place à la barre de progression */
+}
+
+/* Barre de progression animée */
+.progress-timeline-success {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #009596; /* Couleur de la timeline */
+  animation: progress-animation 5s linear forwards; /* Animation de 5s */
+}
+.progress-timeline-danger {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #a82511; /* Couleur de la timeline */
+  animation: progress-animation 5s linear forwards; /* Animation de 5s */
+}
+
+/* Animation de la barre de progression */
+@keyframes progress-animation {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+/* Animation combinée d'apparition et de disparition de l'alerte */
+@keyframes fade-in-out {
+  0% {
+    opacity: 0; /* Invisible au départ */
+    transform: translateY(-30px); /* Déplace légèrement vers le haut */
+  }
+  10% {
+    opacity: 1; /* Complètement visible à 10% */
+    transform: translateY(0); /* Retour à la position d'origine */
+  }
+  90% {
+    opacity: 1; /* Reste visible jusqu'à 90% */
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0; /* Complètement transparent à la fin */
+    transform: translateY(-30px); /* Déplace légèrement vers le haut */
+    visibility: hidden; /* Masque l'élément */
+  }
+}
+
+/* Application de l'animation combinée */
+.alert {
+  animation: fade-in-out 6s forwards; /* 1s pour fade-in et 5s pour fade-out */
+}

@@ -1,0 +1,27 @@
+<!-- src/app/components/tweets/tweets.component.html -->
+    <div *ngIf="tweets">
+      <div *ngIf="tweets.title;else content">
+        <div class="d-flex flex-row">
+          <span>{{ tweets.title }}</span>
+        </div>
+      </div>
+      <ng-template #content>
+        <div class="row info-x">
+          <div class="col-12">رقم الحساب:</div>
+          <div class="col-12">{{ tweets.id }}</div>
+
+        </div>
+        <div class="row info-x">
+          <div class="col-12">الاسم الكامل:</div>
+          <div class="col-12">{{ tweets.name }}</div>
+
+        </div>
+        <div class="row info-x">
+          <div class="col-12">اسم المستخدم:</div>
+          <div class="col-12">{{ tweets.username }}</div>
+        </div>
+      </ng-template>
+
+    </div>
+
+

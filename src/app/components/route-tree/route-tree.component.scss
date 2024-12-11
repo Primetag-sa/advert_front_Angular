@@ -1,0 +1,28 @@
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.pl-3 {
+  padding-left: 1.5rem;
+}
+.list-group{
+  margin-top: 10px;
+}
+
+.list-group-item {
+  cursor: pointer;
+}
+
+.list-group-item.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.bi {
+  font-size: 1.2rem;
+}
+
+.mr-30 {
+  margin-right: 30px;
+}

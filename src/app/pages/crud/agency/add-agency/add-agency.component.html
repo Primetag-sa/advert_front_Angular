@@ -1,0 +1,200 @@
+<app-header></app-header>
+<app-sidebar [active]="'agencies'"></app-sidebar>
+<div class="content-wrapper">
+  <div class="container-fluid mt-1 p-4">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-container">
+        <div class="form-title d-flex justify-content-between align-items-center flex-column flex-md-row">
+          <h3>إدارة العملاء - إضافة وكالة</h3>
+          <div class="d-flex flex-column flex-md-row">
+            <button type="submit" class="btn btn-dark me-md-3 mb-2 mb-md-0">اضافة</button>
+            <button type="button" class="btn btn-danger me-3" (click)="onCancel()">إلغاء</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3 mb-3">
+        <div class="col-lg-12">
+          <label for="email" class="form-label">البريد الإلكتروني</label>
+          <input type="email" [(ngModel)]="email" name="email" class="form-control" id="email" placeholder="البريد الإلكتروني">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-lg-6">
+          <label for="fullName" class="form-label">الإسم الكامل</label>
+          <input type="text" [(ngModel)]="fullName" name="fullName" class="form-control" id="fullName" placeholder="الإسم الكامل">
+        </div>
+        <div class="col-lg-6">
+          <label for="brandName" class="form-label">إسم العلامة التجارية</label>
+          <input type="text" [(ngModel)]="brandName" name="brandName" class="form-control" id="brandName" placeholder="إسم العلامة التجارية">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-lg-6">
+          <label for="phone" class="form-label">رقم الهاتف</label>
+          <input type="text" [(ngModel)]="phone" name="phone" class="form-control" id="phone" placeholder="رقم الهاتف">
+        </div>
+        <div class="col-lg-6">
+          <label for="address" class="form-label">العنوان</label>
+          <input type="text" [(ngModel)]="address" name="address" class="form-control" id="address" placeholder="العنوان">
+        </div>
+      </div>
+        <div class="row mb-3">
+        <div class="col-lg-12">
+          <label for="password" class="form-label">كلمة السر</label>
+          <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password" placeholder="كلمة السر">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-lg-6 mb-3">
+          <label for="facebook" class="form-label">فيسبوك</label>
+          <input type="text" [(ngModel)]="facebookUrl" name="facebookUrl" class="form-control" id="facebook" placeholder="رابط فيسبوك">
+        </div>
+        <div class="col-lg-6 mb-3">
+          <label for="tiktok" class="form-label">تيكتوك</label>
+          <input type="text" [(ngModel)]="tiktokUrl" name="tiktokUrl" class="form-control" id="tiktok" placeholder="رابط تيكتوك">
+        </div>
+        <div class="col-lg-6 mb-3">
+          <label for="snapchat" class="form-label">سناب شات</label>
+          <input type="text" [(ngModel)]="snapchatUrl" name="snapchatUrl" class="form-control" id="snapchat" placeholder="رابط سناب شات">
+        </div>
+        <div class="col-lg-6 mb-3">
+          <label for="instagram" class="form-label">إنستغرام</label>
+          <input type="text" [(ngModel)]="instagramUrl" name="instagramUrl" class="form-control" id="instagram" placeholder="رابط إنستغرام">
+        </div>
+        <div class="col-lg-12 mb-3">
+          <label for="instagram" class="form-label">X</label>
+          <input type="text" [(ngModel)]="xUrl" name="xUrl" class="form-control" id="twitter" placeholder="رابط x">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!--
+<app-header></app-header>
+<app-sidebar [active]="'agencies'"></app-sidebar>
+<div class="content-wrapper">
+  <div class="container-fluid mt-1 p-4">
+
+      <form>
+      <div class="form-container">
+          <div class="form-title d-flex justify-content-between align-items-center flex-column flex-md-row">
+              <h3>إدارة العملاء - إضافة عميل</h3>
+              <div class="d-flex flex-column flex-md-row">
+                  <button type="submit" class="btn btn-dark me-md-3 mb-2 mb-md-0">إرسال دعوة</button>
+                  <button type="button" class="btn btn-danger me-3">إلغاء</button>
+              </div>
+          </div>
+      </div>
+
+
+          <div class="row mb-3">
+              <div class="col-lg-12">
+                  <label for="email" class="form-label">البريد الإلكتروني</label>
+                  <input type="email" [(ngModel)]="email" class="form-control" id="email" placeholder="البريد الإلكتروني">
+              </div>
+              <div class="col-lg-6">
+                  <label for="role" class="form-label">الدور</label>
+                  <input type="text" [(ngModel)]="password" class="form-control" id="role" placeholder="الدور">
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-6">
+                  <label for="fullName" class="form-label">الإسم الكامل</label>
+                  <input type="text" [(ngModel)]="username" class="form-control" id="fullName" placeholder="الإسم الكامل">
+              </div>
+              <div class="col-lg-6">
+                  <label for="brandName" class="form-label">إسم العلامة التجارية</label>
+                  <input type="text" [(ngModel)]="name" class="form-control" id="brandName" placeholder="إسم العلامة التجارية">
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-6">
+                  <label for="phone" class="form-label">رقم الهاتف</label>
+                  <input type="text" [(ngModel)]="phone" class="form-control" id="phone" placeholder="رقم الهاتف">
+              </div>
+              <div class="col-lg-6">
+                  <label for="address" [(ngModel)]="address" class="form-label">العنوان</label>
+                  <input type="text" class="form-control" id="address" placeholder="العنوان">
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-12">
+                  <label class="form-label">الصلاحيات</label>
+                  <div class="d-flex flex-wrap">
+                      <div class="d-flex align-items-center mb-2 me-4">
+                          <input class="form-check-input me-2" type="checkbox" id="permission1"
+                              value="permission1">
+                          <i class="fas fa-times-circle text-danger me-2"></i>
+                          <label class="form-check-label" for="permission1">صلاحية 1</label>
+                          <i class="fas fa-check-circle text-success ms-2"></i>
+                      </div>
+                      <div class="d-flex align-items-center mb-2 me-4">
+                          <input class="form-check-input me-2" type="checkbox" id="permission2"
+                              value="permission2">
+                          <i class="fas fa-times-circle text-danger me-2"></i>
+                          <label class="form-check-label" for="permission2">صلاحية 2</label>
+                          <i class="fas fa-check-circle text-success ms-2"></i>
+                      </div>
+                      <div class="d-flex align-items-center mb-2 me-4">
+                          <input class="form-check-input me-2" type="checkbox" id="permission3"
+                              value="permission3">
+                          <i class="fas fa-times-circle text-danger me-2"></i>
+                          <label class="form-check-label" for="permission3">صلاحية 3</label>
+                          <i class="fas fa-check-circle text-success ms-2"></i>
+                      </div>
+                      <div class="d-flex align-items-center mb-2 me-4">
+                          <input class="form-check-input me-2" type="checkbox" id="permission4"
+                              value="permission4">
+                          <i class="fas fa-times-circle text-danger me-2"></i>
+                          <label class="form-check-label" for="permission4">صلاحية 4</label>
+                          <i class="fas fa-check-circle text-success ms-2"></i>
+                      </div>
+                      <div class="d-flex align-items-center mb-2 me-4">
+                          <input class="form-check-input me-2" type="checkbox" id="permission5"
+                              value="permission5">
+                          <i class="fas fa-times-circle text-danger me-2"></i>
+                          <label class="form-check-label" for="permission5">صلاحية 5</label>
+                          <i class="fas fa-check-circle text-success ms-2"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-12">
+                  <label for="package" class="form-label">الباقة</label>
+                  <select class="form-select" id="package">
+                      <option selected>الباقة الذهبية</option>
+                      <option value="1">الباقة الفضية</option>
+                      <option value="2">الباقة البرونزية</option>
+                  </select>
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-12">
+                  <label for="socialMedia" class="form-label">مواقع التواصل الإجتماعية</label>
+                  <input type="text" class="form-control mb-3" id="socialMedia"
+                      placeholder="إضافة مواقع التواصل الإجتماعية">
+                  <div class="row">
+                      <div class="col-lg-6 mb-3">
+                          <label for="facebook" class="form-label">فيسبوك</label>
+                          <input type="text" [(ngModel)]="facebook_url" class="form-control" id="facebook" placeholder="رابط فيسبوك">
+                      </div>
+                      <div class="col-lg-6 mb-3">
+                          <label for="twitter" class="form-label">تيكتوك</label>
+                          <input type="text" [(ngModel)]="tittok_url" class="form-control" id="tittok_url" placeholder="رابط تيكتوك">
+                      </div>
+                      <div class="col-lg-6 mb-3">
+                          <label for="snapchat" class="form-label">سناب شات</label>
+                          <input type="text" [(ngModel)]="snapchat_url" class="form-control" id="snapchat" placeholder="رابط سناب شات">
+                      </div>
+                      <div class="col-lg-6 mb-3">
+                          <label for="instagram" [(ngModel)]="instagram_url" class="form-label">إنستغرام</label>
+                          <input type="text" class="form-control" id="instagram" placeholder="رابط إنستغرام">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </form>
+  </div>
+</div> -->

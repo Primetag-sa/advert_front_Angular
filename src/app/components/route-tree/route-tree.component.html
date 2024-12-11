@@ -1,0 +1,74 @@
+<ul class="list-group">
+  <ng-container *ngFor="let node of role.access">
+    <li *ngIf="node.name" class="list-group-item d-flex justify-content-between align-items-center p-0">
+      <div class="d-flex align-items-center w-100 justify-content-between" style="direction: rtl;">
+        <!-- Checkbox stylisée avec Bootstrap pour la sélection, placée à droite -->
+        <div class="form-check ml-2 d-flex align-items-center flex-row-reverse">
+            <label class="form-check-label mr-30" for="checkbox-{{ node.name }}">
+              {{ node.name }}
+            </label>
+            <input type="checkbox"
+                   class="form-check-input"
+                   [checked]="node.selected"
+                   [indeterminate]="node.indeterminate"
+                   (click)="toggleSelect(node)"
+                   id="checkbox-{{ node.name }}">
+        </div>
+      </div>
+
+      <!-- Icône pour l'expansion/rétraction -->
+      <span *ngIf="node.children.length>0" (click)="toggleExpand(node)" style="cursor: pointer;">
+        <i class="bi" [ngClass]="{'bi-caret-down-fill': node.expanded, 'bi-caret-right-fill': !node.expanded}"></i>
+      </span>
+    </li>
+
+    <!-- Enfants du nœud -->
+    <ul *ngIf="node.children && node.expanded" class="pl-3">
+      <ng-container *ngFor="let child of node.children">
+        <li *ngIf="node.name" class="list-group-item d-flex justify-content-between align-items-center p-0">
+          <div class="d-flex align-items-center w-100 justify-content-between" style="direction: rtl;">
+            <!-- Checkbox stylisée avec Bootstrap pour les sous-nœuds, placée à droite -->
+            <div class="form-check ml-2 d-flex align-items-center flex-row-reverse">
+              <label class="form-check-label mr-30" for="checkbox-{{ child.name }}">
+                {{ child.name }}
+              </label>
+              <input type="checkbox"
+                     class="form-check-input"
+                     [checked]="child.selected"
+                     [indeterminate]="child.indeterminate"
+                     (click)="toggleSelect(child)"
+                     id="checkbox-{{ child.name }}">
+            </div>
+          </div>
+
+          <!-- Icône pour l'expansion/rétraction des enfants -->
+          <span *ngIf="child.children.length>0" (click)="toggleExpand(child)" style="cursor: pointer;">
+            <i class="bi" [ngClass]="{'bi-caret-down-fill': child.expanded, 'bi-caret-right-fill': !child.expanded}"></i>
+          </span>
+        </li>
+
+        <!-- Petits-enfants du nœud -->
+        <ul *ngIf="child.children && child.expanded" class="pl-3">
+          <ng-container *ngFor="let grandchild of child.children">
+            <li *ngIf="node.name" class="list-group-item d-flex justify-content-between align-items-center p-0">
+              <div class="d-flex align-items-center w-100 justify-content-between" style="direction: rtl;">
+                <!-- Checkbox stylisée avec Bootstrap pour les petits-enfants, placée à droite -->
+                <div class="form-check ml-2 d-flex align-items-center flex-row-reverse">
+                  <label class="form-check-label mr-30" for="checkbox-{{ grandchild.name }}">
+                    {{ grandchild.name }}
+                  </label>
+                  <input type="checkbox"
+                         class="form-check-input"
+                         [checked]="grandchild.selected"
+                         [indeterminate]="grandchild.indeterminate"
+                         (click)="toggleSelect(grandchild)"
+                         id="checkbox-{{ grandchild.name }}">
+                </div>
+              </div>
+            </li>
+          </ng-container>
+        </ul>
+      </ng-container>
+    </ul>
+  </ng-container>
+</ul>

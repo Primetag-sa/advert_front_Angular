@@ -1,0 +1,14 @@
+<app-header></app-header>
+<app-sidebar [active]="'role'"></app-sidebar>
+<div class="content-wrapper">
+  <div class="container-fluid mt-0 p-4">
+    <div class="form-container row g-2">
+      <div *ngFor="let role of roles" class="col-md-4">
+        <div class="cardTree d-flex justify-content-center flex-column align-items-start">
+          <h4 class="fw-bold"><u>{{ role.title }}</u></h4>
+          <app-route-tree class="app-route" [role]="role"></app-route-tree>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
