@@ -1,24 +1,49 @@
 <div class="login-page">
-  <div class="col-md-6 d-flex flex-column align-items-center justify-content-center bg-white shadow d-flex-center">
+  <div
+    class="col-md-6 d-flex flex-column align-items-center justify-content-center bg-white shadow d-flex-center"
+  >
     <div class="col-md-10">
       <div class="text-center mt-5">
-        <a routerLink="/"><img src="../../../../assets/images/logo.png" alt="Logo" class="img-fluid" style="max-width: 150px;"></a>
+        <a routerLink="/"
+          ><img
+            src="../../../../assets/images/logo.png"
+            alt="Logo"
+            class="img-fluid"
+            style="max-width: 150px"
+        /></a>
       </div>
-      <h5 class="mb-3 text-center fw-bold" style="color: #363861;">تسجيل الدخول</h5>
+      <h5 class="mb-3 text-center fw-bold" style="color: #363861">
+        تسجيل الدخول
+      </h5>
       <h6 class="mb-3 text-center text-muted">قم بتسجيل الدخول إلى حسابك</h6>
       <div class="py-2 px-5 w-100">
-        <form #loginForm="ngForm" (ngSubmit)="login()" class="row g-4">
-          <div *ngIf="errorMessage" class="col-12 alert alert-danger" role="alert">
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="row g-4">
+          <div
+            *ngIf="errorMessage"
+            class="col-12 alert alert-danger"
+            role="alert"
+          >
             {{ errorMessage }}
           </div>
           <div class="col-12">
             <label class="email">البريد الإلكتروني</label>
             <div class="input-group">
-              <input type="email" [(ngModel)]="email" name="email" required id="email" class="form-control"
-                placeholder=" البريد الإلكتروني" #emailModel="ngModel">
-              <!-- -->
+              <input
+                type="email"
+                formControlName="email"
+                required
+                id="email"
+                class="form-control"
+                placeholder=" البريد الإلكتروني"
+              />
             </div>
-            <div *ngIf="emailModel.invalid && emailModel.touched" class="text-danger">
+            <div
+              *ngIf="
+                loginForm.get('email')?.invalid &&
+                loginForm.get('email')?.touched
+              "
+              class="text-danger"
+            >
               يرجى إدخال عنوان بريد إلكتروني صالح.
             </div>
           </div>
@@ -28,34 +53,60 @@
               <a routerLink="/reset" class="text-muted">نسيت كلمة السر</a>
             </div>
             <div class="input-group">
-              <input type="password" [(ngModel)]="password" name="password" required id="password" class="form-control"
-                placeholder=" كلمة السر" #passwordModel="ngModel">
-
+              <input
+                type="password"
+                formControlName="password"
+                required
+                id="password"
+                class="form-control"
+                placeholder=" كلمة السر"
+              />
             </div>
-            <div *ngIf="passwordModel.invalid && passwordModel.touched" class="text-danger">
-              Password is required.
+            <div
+              *ngIf="
+                loginForm.get('password')?.invalid &&
+                loginForm.get('password')?.touched
+              "
+              class="text-danger"
+            >
+              الرقم السري يجب أن يتكون من 8 حروف على الأقل
             </div>
           </div>
           <div class="col-sm-12 d-flex align-items-center">
-            <input class="form-check-input me-2" type="checkbox" id="inlineFormCheck">
-            <label class="form-check-label" for="inlineFormCheck">قم بحفظ تسجيلي</label>
+            <input
+              class="form-check-input me-2"
+              type="checkbox"
+              id="inlineFormCheck"
+            />
+            <label class="form-check-label" for="inlineFormCheck"
+              >قم بحفظ تسجيلي</label
+            >
           </div>
           <div class="col-12">
-            <button type="submit" class="btn w-100 mt-4" [disabled]="loginForm.invalid"
-              style="background-color: #363861; color: white;">تسجيل الدخول</button>
+            <button
+              type="submit"
+              class="btn w-100 mt-4"
+              [disabled]="loginForm.invalid"
+              style="background-color: #363861; color: white"
+            >
+              تسجيل الدخول
+            </button>
           </div>
           <div class="col-12 text-center mt-3">
             <span>قم بإنشاء حسابك </span>
             <a routerLink="/register" class="text-primary">من هنا</a>
           </div>
         </form>
-
       </div>
     </div>
   </div>
-  <div class="col-md-6 d-none d-md-block p-0 ">
+  <div class="col-md-6 d-none d-md-block p-0">
     <div class="form-right h-100">
-      <img src="../../../../assets/images/signup.png" class="img-fluid h-100" alt="Signup Image">
+      <img
+        src="../../../../assets/images/signup.png"
+        class="img-fluid h-100"
+        alt="Signup Image"
+      />
     </div>
   </div>
 </div>

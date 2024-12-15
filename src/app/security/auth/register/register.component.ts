@@ -3,13 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CrudService } from '../../../services/api/crud.service';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrl: './register.component.scss',
 })
-export class RegisterComponent{
+export class RegisterComponent {
   fullName: string = '';
   email: string = '';
   password: string = '';
@@ -17,10 +16,7 @@ export class RegisterComponent{
   confirmPassword: string = '';
   errorMessage: string | null = null;
 
-  constructor(
-    private crudService: CrudService,
-    private router: Router
-  ) {}
+  constructor(private crudService: CrudService, private router: Router) {}
 
   register() {
     if (this.password !== this.confirmPassword) {
@@ -33,18 +29,18 @@ export class RegisterComponent{
       email: this.email,
       agencyName: this.brandName,
       password: this.password,
-      password_confirmation: this.confirmPassword
+      password_confirmation: this.confirmPassword,
     };
 
-    this.crudService.create('users',userData)
-      .subscribe(
-        response => {
-          localStorage.setItem('token', response.token);  // Save token if needed
-          console.log(response);
+    this.crudService.create('register', userData).subscribe(
+      (response) => {
+        localStorage.setItem('token', response.token); // Save token if needed
+        //  localStorage.setItem('userToken', response.token);
+        console.log('Register res: ', response);
 
-          this.router.navigate(['/success']);  // Navigate to login or dashboard
-        },
-        error => this.errorMessage = error.error.message  // Adjust based on your error handling
-      );
+        this.router.navigate(['/success']); // Navigate to login or dashboard
+      },
+      (error) => (this.errorMessage = error.error.message) // Adjust based on your error handling
+    );
   }
 }
