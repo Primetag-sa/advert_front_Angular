@@ -26,10 +26,7 @@ export class AuthService {
       )
       .pipe(
         tap((response) => {
-          console.log('Login response:', response);
-
           if (response.token) {
-            console.log('SavedToken', response.token);
             localStorage.setItem('userToken', response.token);
           } else {
             console.error('Token not found in the response');
@@ -53,9 +50,9 @@ export class AuthService {
   // Vérifier l'état d'authentification
   isAuthenticated(): Observable<any> {
     const token = localStorage.getItem('userToken');
-    console.log('Token:', token);
+
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    console.log('Headders:', headers);
+
     return this.http.get<any>(`${this.baseUrl}/isAuthenticated`, {
       headers,
     });
