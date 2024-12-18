@@ -1,1 +1,109 @@
-<p>sidebar-agent works!</p>
+<nav class="sidebar overflow">
+  <div class="menu-bar">
+    <div class="menu">
+      <ul class="menu-links px-0">
+        <div class="logoimg">
+          <a routerLink="/dashboard">
+            <img class="logo" src="assets/images/logo.png" alt="logo"
+          /></a>
+        </div>
+
+        <li
+          class="nav-link mb-1"
+          [ngClass]="{ currentpage: active === 'dashboard' }"
+        >
+          <a routerLink="/dashboard">
+            <i class="bx bx-pie-chart-alt icons"></i>
+            <span class="text nav-text fw-bold">لوحة التحكم</span>
+          </a>
+        </li>
+
+        <li
+          class="nav-link mb-1"
+          [ngClass]="{ currentpage: active === 'notification' }"
+        >
+          <a routerLink="/notification">
+            <i class="bx bx-bell icons"></i>
+            <span class="text nav-text fw-bold">الإشعارات</span>
+          </a>
+        </li>
+        <li
+          class="nav-link mb-1"
+          [ngClass]="{ currentpage: active === 'rapport' }"
+        >
+          <a routerLink="/rapport">
+            <i class="bx bx-bar-chart-alt-2 icons"></i>
+            <span class="text nav-text fw-bold">التقارير</span>
+          </a>
+        </li>
+
+        <span class="text nav-text fw-bold text-muted pages">صفحات</span>
+        <li class="nav-link mb-1" [ngClass]="{ currentpage: active === 'x' }">
+          <a href="agency/x">
+            <i class="bx bxl-twitter icons"></i>
+            <span class="text nav-text fw-bold">X</span>
+          </a>
+        </li>
+        <li
+          class="nav-link mb-1"
+          [ngClass]="{ currentpage: active === 'snapchat' }"
+        >
+          <a href="agency/snapchat">
+            <i class="bx bxl-snapchat icons"></i>
+            <span class="text nav-text fw-bold">سناب شات</span>
+          </a>
+        </li>
+        <li
+          class="nav-link mb-1"
+          [ngClass]="{ currentpage: active === 'facebook' }"
+        >
+          <a href="agency/facebook">
+            <i class="bx bxl-facebook icons"></i>
+            <span class="text nav-text fw-bold">فيس بوك</span>
+          </a>
+        </li>
+        <li
+          class="nav-link mb-1"
+          [ngClass]="{ currentpage: active === 'tiktok' }"
+        >
+          <a href="agency/tiktok">
+            <i class="bx bxl-tiktok icons"></i>
+            <span class="text nav-text fw-bold">تيك توك</span>
+          </a>
+        </li>
+
+        <li
+          class="nav-link mb-1"
+          [ngClass]="{ currentpage: active === 'instagram' }"
+        >
+          <a href="agency/instagram">
+            <i class="bx bxl-instagram icons"></i>
+            <span class="text nav-text fw-bold">انستغرام</span>
+          </a>
+        </li>
+
+        <!--  <li class="nav-link mb-1" [ngClass]="{'currentpage': active === 'x'}">
+                <a href="agency/x">
+                    <i class="bx bxl-twitter icons"></i>
+                    <span class="text nav-text fw-bold">منصة x</span>
+                </a>
+            </li> -->
+      </ul>
+    </div>
+
+    <div class="bottom-content">
+      <li class="nav-link" [ngClass]="{ currentpage: active === 'profile' }">
+        <a routerLink="/profile">
+          <i class="bx bx-cog icons"></i>
+          <span class="text nav-text fw-bold">الإعدادات</span>
+        </a>
+      </li>
+      <li class="nav-link">
+        <a (click)="logout()">
+          <i class="bx bx-log-out icons"></i>
+          <span class="text nav-text fw-bold">تسجيل الخروج</span>
+        </a>
+      </li>
+    </div>
+  </div>
+</nav>

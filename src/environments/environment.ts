@@ -3,6 +3,6 @@ export const environment = {
   //production: true,
   /* url: 'http://localhost:8000',
   apiUrl: 'http://localhost:8000/api', */
-  url: 'https://ec2-3-28-121-92.me-central-1.compute.amazonaws.com/',
-  apiUrl: 'https://ec2-3-28-121-92.me-central-1.compute.amazonaws.com/api',
+  url: 'https://website-c103dfbb.eiv.tjo.mybluehost.me/',
+  apiUrl: 'https://website-c103dfbb.eiv.tjo.mybluehost.me/api',
 };
