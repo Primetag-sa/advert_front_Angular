@@ -18,16 +18,18 @@
           </a>
         </li>
         <li
+          *ngIf="checkAccessRoute('10')"
           class="nav-link mb-1"
           [ngClass]="{ currentpage: active === 'notification' }"
         >
-          <a routerLink="/agents">
+          <a routerLink="/agents/list">
             <i class="fa-solid fa-user-gear icons"></i>
             <span class="text nav-text fw-bold">إدارة العملاء</span>
           </a>
         </li>
         <li
           class="nav-link mb-1"
+          *ngIf="checkAccessRoute('11')"
           [ngClass]="{ currentpage: active === 'notification' }"
         >
           <a routerLink="/notification">
