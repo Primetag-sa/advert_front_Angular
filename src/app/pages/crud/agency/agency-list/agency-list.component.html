@@ -3,88 +3,135 @@
 
 <div class="content-wrapper">
   <div class="container-fluid mt-1">
-      <div class="d-flex flex-column align-items-start">
-          <h5 class="fw-bold pe-3">لوحة التحكم</h5>
-          <h5 class="text-end text-muted fw-bold fs-6 pe-3">لوحة التحكم - قائمة الوكالات</h5>
-      </div>
+    <div class="d-flex flex-column align-items-start">
+      <h5 class="fw-bold pe-3">لوحة التحكم</h5>
+      <h5 class="text-end text-muted fw-bold fs-6 pe-3">
+        لوحة التحكم - قائمة الوكالات
+      </h5>
+    </div>
 
-      <section class="control-panel">
-          <div class="filters d-flex flex-column flex-md-row align-items-start align-items-md-center">
-              <div class="filtername ">
-                  <i class="bi bi-funnel"></i>قائمة الوكالات
-              </div>
-              <!-- <select class="form-select me-md-2 mb-2 mb-md-0">
+    <section class="control-panel">
+      <div
+        class="filters d-flex flex-column flex-md-row align-items-start align-items-md-center"
+      >
+        <div class="filtername"><i class="bi bi-funnel"></i>قائمة الوكالات</div>
+        <!-- <select class="form-select me-md-2 mb-2 mb-md-0">
                   <option>تصفية</option>
               </select>
               <select class="form-select me-md-2 mb-2 mb-md-0">
                   <option>تاريخ الإنضمام</option>
               </select> -->
-              <select class="form-select me-md-2 mb-2 mb-md-0" (change)="onSelectChange($event)">
-                  <option value="all">الكل</option>
-                  <option value="1">الفعالة</option>
-                  <option value="0">الغير المفعلة</option>
-              </select>
-              <!-- <button class="btn btn-primary apply-button me-md-2 mb-2 mb-md-0 text-dark">اتصال</button> -->
-          </div>
-          <div class="d-flex justify-content-end flex-wrap align-items-start align-items-md-center mt-3 mt-md-0">
-              <a  routerLink="/agencies/add">
-                  <button type="submit" class="btn btn-dark me-md-2 mb-2 mb-md-0" style="background-color:  #363861; border:none">
-                      <i class="fa-solid fa-user-plus"></i> إضافة وكالة
-                  </button>
-              </a>
-          </div>
-      </section>
+        <select
+          class="form-select me-md-2 mb-2 mb-md-0"
+          (change)="onSelectChange($event)"
+        >
+          <option value="all">الكل</option>
+          <option value="1">الفعالة</option>
+          <option value="0">الغير المفعلة</option>
+        </select>
+        <!-- <button class="btn btn-primary apply-button me-md-2 mb-2 mb-md-0 text-dark">اتصال</button> -->
+      </div>
+      <div
+        class="d-flex justify-content-end flex-wrap align-items-start align-items-md-center mt-3 mt-md-0"
+      >
+        <a routerLink="/agencies/add">
+          <button
+            type="submit"
+            class="btn btn-dark me-md-2 mb-2 mb-md-0"
+            style="background-color: #363861; border: none"
+          >
+            <i class="fa-solid fa-user-plus"></i> إضافة وكالة
+          </button>
+        </a>
+      </div>
+    </section>
 
-      <div class="clients-list">
-        <!-- src/app/dashboard/dashboard.component.html -->
-        <div class="table-responsive">
+    <div class="clients-list">
+      <!-- src/app/dashboard/dashboard.component.html -->
+      <div class="table-responsive">
         <table class="table clients-list clinte-mange table-responsive">
           <thead>
-
-              <th>المعرف</th>
-              <th>شعار العميل</th>
-              <th>الاسم</th>
-              <th>البريد الإلكتروني</th>
-              <th>تاريخ الانضمام</th>
-              <th>الحملات</th>
-              <th>التفعيل</th>
-              <th>إعدادات</th>
-
+            <th>المعرف</th>
+            <th>شعار العميل</th>
+            <th>الاسم</th>
+            <th>البريد الإلكتروني</th>
+            <th>تاريخ الانضمام</th>
+            <th>الحملات</th>
+            <th>التفعيل</th>
+            <th>إعدادات</th>
           </thead>
           <tbody id="clients-table-body">
             <tr *ngFor="let client of clients">
-              <td>{{ client.id }}<!--  {{ client.agency.id }} --></td>
+              <td>
+                {{ client.id
+                }}<!--  {{ client.agency.id }} -->
+              </td>
 
               <td>
-                <img [src]="client.avatar" alt="Logo" class="img-fluid rounded-circle" width="40" height="40">
+                <img
+                  [src]="client.avatar"
+                  alt="Logo"
+                  class="img-fluid rounded-circle"
+                  width="40"
+                  height="40"
+                />
               </td>
               <td>{{ client.name }}</td>
               <td>{{ client.email }}</td>
-              <td>{{ client.created_at | date:'dd/MM/yyyy' }}</td>
+              <td>{{ client.created_at | date : "dd/MM/yyyy" }}</td>
               <td>{{ client.campaigns ?? 0 }}</td>
-              <td ><span class="text-dark badge {{ client.is_confirmed ? 'bg-success-subtle' : ' bg-danger-subtle' }}">{{ client.is_confirmed ? 'نعم' : 'لا' }}</span></td>
+              <td>
+                <span
+                  class="text-dark badge {{
+                    client.is_confirmed
+                      ? 'bg-success-subtle'
+                      : ' bg-danger-subtle'
+                  }}"
+                  >{{ client.is_confirmed ? "نعم" : "لا" }}</span
+                >
+              </td>
               <td data-label="إعدادات">
                 <div class="dropdown">
-                  <button class="btn dropdown-toggle custom-dropdown-toggle" type="button"
-                    id="dropdownMenuButton{{client.id}}" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button
+                    class="btn dropdown-toggle custom-dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton{{ client.id }}"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
                     <i class="bx bx-chevron-down"></i>
                   </button>
-                  <ul class="dropdown-menu" aria-labelledby=""><!-- dropdownMenuButton{{client.id}} -->
+                  <ul class="dropdown-menu" aria-labelledby="">
+                    <!-- dropdownMenuButton{{client.id}} -->
                     <li>
-                      <a class="dropdown-item" (click)="agents(client.agency.id)">
+                      <a
+                        class="dropdown-item"
+                        (click)="agents(client.agency.id)"
+                      >
                         <i class="fas fa-users me-2 text-primary"></i>العملاء
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" (click)="confirmDeleteClient(client.id)">
+                      <a
+                        class="dropdown-item"
+                        (click)="confirmDeleteClient(client.id)"
+                      >
                         <i class="fas fa-trash-alt me-2 text-danger"></i>حذف
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" *ngIf="client.is_confirmed" (click)="cancelClient(client.id)">
+                      <a
+                        class="dropdown-item"
+                        *ngIf="client.is_confirmed"
+                        (click)="cancelClient(client.id)"
+                      >
                         <i class="fas fa-ban me-2 text-warning"></i>إغلاق
                       </a>
-                      <a class="dropdown-item" *ngIf="!client.is_confirmed" (click)="activatedClient(client.id)">
+                      <a
+                        class="dropdown-item"
+                        *ngIf="!client.is_confirmed"
+                        (click)="activatedClient(client.id)"
+                      >
                         <i class="fas fa-check me-2 text-success"></i>تفعيل
                       </a>
                     </li>
@@ -99,18 +146,30 @@
             </tr>
           </tbody>
         </table>
-        </div>
-
-
-        <div class="pagination">
-          <button (click)="previousPage()" [disabled]="!pagination.prev_page_url" id="prev-button" class="btn btn-primary">السابق</button>
-          <span id="page-info">{{pagination.current_page}} / {{pagination.last_page}}</span>
-          <button (click)="nextPage()" [disabled]="!pagination.next_page_url" id="next-button" class="btn btn-primary">التالي</button>
-        </div>
-
-
       </div>
+
+      <div class="pagination">
+        <button
+          (click)="previousPage()"
+          [disabled]="!pagination.prev_page_url"
+          id="prev-button"
+          class="btn btn-primary"
+        >
+          السابق
+        </button>
+        <span id="page-info"
+          >{{ pagination.current_page }} / {{ pagination.last_page }}</span
+        >
+        <button
+          (click)="nextPage()"
+          [disabled]="!pagination.next_page_url"
+          id="next-button"
+          class="btn btn-primary"
+        >
+          التالي
+        </button>
+      </div>
+    </div>
   </div>
   <!-- Modal Confirmation -->
-
 </div>

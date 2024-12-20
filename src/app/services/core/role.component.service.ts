@@ -1,4 +1,4 @@
-import { Injectable, Type } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { NotificationComponent } from '../../pages/admin/notification/notification.component';
 
