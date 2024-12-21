@@ -1,12 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;700;900&display=swap");
+@import url(./scss/fonts.scss);
 
 * {
-  font-family: "Cairo", sans-serif;
+  font-family: Noor;
 
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 
 :root {
   --body-color: #e4e9f7;
@@ -180,10 +182,7 @@ a {
   color: white !important;
 }
 
-.nav-link:hover .text,
-.nav-link:hover .icons {
-  color: white !important;
-}
+
 
 .sidebar .pages {
   display: block;
@@ -213,9 +212,7 @@ a {
   color: white !important;
 }
 
-.nav-link:hover {
-  color: white;
-}
+
 
 .custom-gap {
   margin-bottom: 1rem;
@@ -249,10 +246,7 @@ body.dark .search-bar input {
   color: white;
 }
 
-.nav-link {
-  padding: 0;
-  position: relative;
-}
+
 
 .image {
   display: flex;
@@ -315,15 +309,16 @@ body.dark .search-bar input {
   margin-right: -35px;
 }
 
-.header {
+/* .header {
   position: fixed;
   left: 0;
   top: 0;
+  right: 0;
   width: 100%;
   z-index: 10;
   background-color: var(--color-white);
   box-shadow: var(--shadow-medium);
-}
+} */
 
 .navbar {
   display: flex;
@@ -343,9 +338,7 @@ body.dark .search-bar input {
   margin-left: auto;
 }
 
-.navbar-nav .nav-item {
-  margin-left: 15px;
-}
+
 
 .navbar .search-bar input {
   width: 75%;
@@ -1142,10 +1135,7 @@ tr .bx-chevron-down {
 }
 
 /* landing page */
-.navbar-nav {
-  flex: 1;
-  justify-content: center;
-}
+
 
 .login-button {
   color: #000;
@@ -1165,27 +1155,16 @@ tr .bx-chevron-down {
   color: black;
 }
 
-.loginbt {
-  background-color: #2a3f54;
-  color: white;
-  border-radius: 50px;
-  width: max-content;
-  padding: 0 15px;
-  /* height: 40px; */
-}
+
 
 body {
-  font-family: "Cairo", sans-serif;
   background-color: #ffffff;
   text-align: center;
   margin: 0;
   padding: 0;
   direction: rtl;
   align-items: center;
-}
-
-h2 {
-  font-family: "Cairo", sans-serif;
+  font-family: Noor;
 }
 
 .header {
@@ -1475,15 +1454,15 @@ h2 {
   background-color: transparent;
 }
 
-.landingbody::before,
+/* .landingbody::before,
 .landingbody::after {
   content: "";
   position: absolute;
   border-radius: 50%;
   z-index: -1;
-}
+} */
 
-.landingbody::before {
+/* .landingbody::before {
   width: 65vw;
   height: 65vw;
   background-color: transparent;
@@ -1500,8 +1479,8 @@ h2 {
   border: #c2c0c0 solid 2px;
   top: 45%;
   left: 50%;
-  transform: translate(-50%, -50%);
-}
+  transform: translate(-50%, -50%); 
+}*/
 
 .title {
   font-size: 36px;
@@ -1651,13 +1630,6 @@ h2 {
     order: 2;
   }
 
-  .navbar .navbar-nav {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    gap: 203px;
-    margin-right: 0;
-  }
 
   .form-container {
     margin-right: 29px;
