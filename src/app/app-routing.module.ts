@@ -32,22 +32,20 @@ import { AgencyTrackingComponent } from './pages/social-networks/agency-tracking
 import { AgencyTiktokComponent } from './pages/social-networks/agency-tiktok/agency-tiktok.component';
 import { AgencyGoogleComponent } from './pages/social-networks/agency-google/agency-google.component';
 import { SnapchatCallbackComponent } from './pages/social-networks/snapchat-callback/snapchat-callback.component';
+import { AboutComponent } from './pages/about/about.component';
 
 function addPreloadResolverToRoutes(routes: Routes): Routes {
   return routes.map((route: any) => {
-    // Ajoute le resolver à la route si elle a une route enfant ou un composant
     if (route.component) {
       route.resolve = {
         ...route.resolve,
-        preloadAccess: PreloadAccessResolver, // Ajoute le resolver
+        preloadAccess: PreloadAccessResolver, 
       };
     }
 
-    // Si la route a des enfants, applique la fonction récursive
     if (route.children) {
       route.children = addPreloadResolverToRoutes(route.children);
     }
-
     return route;
   });
 }
@@ -75,6 +73,11 @@ export const routes: Routes = [
     data: { id: '1', title: 'الصفحة الرئيسية' },
   },
   { path: 'home', redirectTo: '', pathMatch: 'full', data: { id: '2' } },
+  {
+    path: 'about',
+    component: AboutComponent,
+    data: { id: '25', notSecure: true }, 
+  },
   {
     path: 'login',
     component: LoginComponent,

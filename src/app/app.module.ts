@@ -6,7 +6,7 @@ import { LoginComponent } from './security/auth/login/login.component';
 import { RegisterComponent } from './security/auth/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { withFetch, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { withFetch, provideHttpClient, withInterceptorsFromDi, HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { ProfileComponent } from './pages/admin/profile/profile.component';
 import { NotificationComponent } from './pages/admin/notification/notification.component';
@@ -64,7 +64,7 @@ import { AgencyGoogleComponent } from './pages/social-networks/agency-google/age
 import {SnapchatCallbackComponent} from "./pages/social-networks/snapchat-callback/snapchat-callback.component";
 import {AgencyTrackingComponent} from "./pages/social-networks/agency-tracking/agency-tracking.component";
 import {AdminRapportComponent} from "./pages/rapport/admin-rapport/admin-rapport.component";
-// last version of 06-12-2024
+import { AboutComponent } from './pages/about/about.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,6 +116,7 @@ import {AdminRapportComponent} from "./pages/rapport/admin-rapport/admin-rapport
     NotFoundComponent,
     GenaralChartComponent,
     AgencyTrackingComponent,
+    AboutComponent,
   ],
   exports: [
     HeaderComponent,
@@ -134,7 +135,8 @@ import {AdminRapportComponent} from "./pages/rapport/admin-rapport/admin-rapport
     ReactiveFormsModule,
     NgChartsModule,
     NgbCollapse,
-    DataTablesModule
+    DataTablesModule,
+    HttpClientModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: CsrfInterceptor, multi: true },

@@ -22,7 +22,7 @@
           <a class="nav-link " href="#partners">شركائنا</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#about">من نحن</a>
+          <a class="nav-link "  routerLink="/about" >من نحن</a>
         </li>
         <!-- <li class="nav-item">
       <a class="nav-link " href="#contact">تواصل معنا</a>
@@ -135,7 +135,7 @@
          <label for="yearly"> سنويا</label>
     </div>
     <div class="packages">
-        <div class="package">
+        <!-- <div class="package">
             <div class="icon-container">
                 <img src="../../../assets/landing-page/bullseye-arrow.svg" alt="">
             </div>
@@ -290,8 +290,44 @@
               </div>
            </div>
            <button>اشترك الآن</button>
+      </div> -->
+      <div *ngFor="let plan of plans" class="package">
+        <div class="icon-container">
+          <img src="../../../assets/landing-page/bullseye-arrow.svg" alt="">
+        </div>
+        <span id="tittle">{{ plan.name }}</span>
+        <span id="desc">{{ plan.description }}</span>
+        <div class="price">
+          <span id="one">${{ plan.base_price }}</span>
+          <span id="two">{{ plan.period_type === 'monthly' ? 'شهريا' : 'سنويا' }}</span>
+        </div>
+        <div class="countOfUser">
+          <div class="tittle">
+            <img src="../../../assets/landing-page/users.svg" alt="">
+            <span>عدد المستخدمين</span>
+          </div>
+          <progress id="progressBar" [value]="plan.max_users" [max]="plan.min_users"></progress>
+          <div class="numbers">
+            <span id="min">{{ plan.min_users }}</span>
+            <span id="max">{{ plan.max_users }}</span>
+          </div>
+        </div>
+        <div class="countOfWebsite">
+          <img src="../../../assets/landing-page/website.svg" alt="">
+          <select name="" id="count">
+            <option value="" disabled selected>عدد المواقع</option>
+            <option *ngFor="let user of [2, 3, 4]" [value]="user">{{ user }}</option>
+          </select>
+        </div>
+        <div class="features">
+          <div *ngFor="let feature of plan.features" [ngClass]="{'anable-feature': true, 'disble-feature': false}">
+            <img src="../../../assets/landing-page/Check.svg" alt="">
+            <span>{{ feature.name }}</span>
+          </div>
+        </div>
+        <button>اشترك الآن</button>
       </div>
-        
+      
         
     </div>
    </div>
@@ -319,8 +355,8 @@
     </div>
 
     <ul class="nav col-md-4 justify-content-center mb-3 mb-md-0 order-3 order-lg-2">
-      <li class="nav-item"><a  class="nav-link px-2 text-muted ">الرئيسية</a></li>
-      <li class="nav-item"><a  class="nav-link px-2 text-muted ">من نحن</a></li>
+      <li class="nav-item"><a  class="nav-link px-2 text-muted " routerLink="/home">الرئيسية</a></li>
+      <li class="nav-item"><a  class="nav-link px-2 text-muted " routerLink="/about">من نحن</a></li>
       <li class="nav-item"><a  class="nav-link px-2 text-muted ">خدماتنا</a></li>
       <li class="nav-item"><a  class="nav-link px-2 text-muted ">شركائنا</a></li>
       <li class="nav-item"><a  class="nav-link px-2 text-muted ">باقتنا</a></li>
