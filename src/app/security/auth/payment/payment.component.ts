@@ -28,6 +28,18 @@ export class PaymentComponent implements OnInit {
     this.initializeTapPayment();
   }
 
+private credentials = {
+    test: {
+      publicKey: 'pk_test_LRSpP4m9ZlChjybVkvYuiIfT',
+      secretKey: 'sk_test_tUBO1hgMlYVJk4DAHpi0Pcfz'
+    },
+    production: {
+      publicKey: 'pk_live_Ovhrm9BazFynoAqWHxjIQ3u5',
+      secretKey: 'sk_live_op9syjrgA15JeVDTtKOSWX6l'
+    }
+  };
+
+
 
   private getPublicKey(): string {
     return this.credentials[this.environment].publicKey;
