@@ -65,6 +65,7 @@ import {SnapchatCallbackComponent} from "./pages/social-networks/snapchat-callba
 import {AgencyTrackingComponent} from "./pages/social-networks/agency-tracking/agency-tracking.component";
 import {AdminRapportComponent} from "./pages/rapport/admin-rapport/admin-rapport.component";
 import { AboutComponent } from './pages/about/about.component';
+import { PaymentComponent } from './security/auth/payment/payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -117,6 +118,7 @@ import { AboutComponent } from './pages/about/about.component';
     GenaralChartComponent,
     AgencyTrackingComponent,
     AboutComponent,
+    PaymentComponent,
   ],
   exports: [
     HeaderComponent,

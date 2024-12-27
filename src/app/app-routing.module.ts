@@ -33,6 +33,7 @@ import { AgencyTiktokComponent } from './pages/social-networks/agency-tiktok/age
 import { AgencyGoogleComponent } from './pages/social-networks/agency-google/agency-google.component';
 import { SnapchatCallbackComponent } from './pages/social-networks/snapchat-callback/snapchat-callback.component';
 import { AboutComponent } from './pages/about/about.component';
+import { PaymentComponent } from './security/auth/payment/payment.component';
 
 function addPreloadResolverToRoutes(routes: Routes): Routes {
   return routes.map((route: any) => {
@@ -97,6 +98,11 @@ export const routes: Routes = [
     path: 'reset/message',
     component: MsgSendResetComponent,
     data: { id: '6' },
+  },
+  {
+    path: 'Payment',
+    component: PaymentComponent,
+    data: { id: '26', notSecure: true }, 
   },
   { path: 'success', component: MsgWelcomComponent, data: { id: '7' } },
   { path: 'profile', component: ProfileComponent, data: { id: '8' } },

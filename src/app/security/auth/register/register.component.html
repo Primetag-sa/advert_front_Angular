@@ -25,7 +25,7 @@
             </div>
           </div>
 
-          <div class="col-12">
+          <div class="col-12" *ngIf="isLowestPrice == true">
             <label class="label-flex">اسم الوكالة </label>
             <div class="input-group">
               <input type="text" [(ngModel)]="brandName" name="brandName" required id="full-name-agency" class="form-control"
@@ -35,9 +35,6 @@
               Full name is required.
             </div>
           </div>
-
-
-
           <!-- Email Field -->
           <div class="col-12">
             <label class="label-flex" for="email">البريد الإلكتروني</label>
@@ -49,39 +46,47 @@
             <div *ngIf="emailModel.invalid && emailModel.touched" class="text-danger">
               يرجى إدخال عنوان بريد إلكتروني صالح.
             </div>
+            <div *ngIf="serverErrors['email']" class="text-danger">
+              {{ serverErrors['email'][0] }}
+            </div>
           </div>
-
-
           <!-- Password Field -->
           <div class="col-12">
             <div class="label-flex">
               <label>كلمة السر</label>
             </div>
             <div class="input-group">
-              <input type="password" [(ngModel)]="password" name="password" required id="password" class="form-control"
+              <input type="password" [(ngModel)]="password" name="password" minlength="8" required id="password" class="form-control"
                 placeholder="كلمة السر" #passwordModel="ngModel">
             </div>
             <div *ngIf="passwordModel.invalid && passwordModel.touched" class="text-danger">
-              Password is required and must be at least 5 characters long.
+              Password is required and must be at least 8 characters long.
+            </div>
+            <div *ngIf="passwordModel.errors?.['minlength']"class="text-danger">
+              Password must be at least 8 characters long.
+            </div>
+            <div *ngIf="serverErrors['password']" class="text-danger">
+              {{ serverErrors['password'][0] }}
             </div>
           </div>
-
           <!-- Confirm Password Field -->
           <div class="col-12">
             <label class="label-flex" for="confirm-password">تأكيد كلمة السر</label>
             <div class="input-group">
               <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-              <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required id="confirm-password" class="form-control"
+              <input type="password" [(ngModel)]="confirmPassword"  minlength="8" name="confirmPassword" required id="confirm-password" class="form-control"
                 placeholder="تأكيد كلمة السر" #confirmPasswordModel="ngModel">
             </div>
             <div *ngIf="confirmPasswordModel.invalid && confirmPasswordModel.touched" class="text-danger">
               Confirm password is required.
             </div>
+            <div *ngIf="confirmPasswordModel.errors?.['minlength']"class="text-danger">
+              Password must be at least 8 characters long.
+            </div>
             <div *ngIf="confirmPasswordModel.touched && confirmPasswordModel.value !== password" class="text-danger">
               Passwords do not match.
             </div>
           </div>
-
           <!-- Submit Button -->
           <div class="col-12">
             <button type="submit" class="btn w-100 mt-4" [disabled]="registerForm.invalid"

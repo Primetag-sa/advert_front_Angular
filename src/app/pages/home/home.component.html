@@ -111,7 +111,7 @@
         <img src="../../../assets/landing-page/Facebook (1).png" alt="">
     </div>
    </div> 
-   <div class="section3">
+   <div class="section3" id="section3">
     <h1>بـــــــــــــاقاتنا :</h1>
     <div class="features">
         <div class="feature">
@@ -296,7 +296,7 @@
            </div>
            <button>اشترك الآن</button>
       </div> -->
-      <div *ngFor="let plan of plans" class="package">
+      <!-- <div *ngFor="let plan of plans" class="package">
         <div class="icon-container">
           <img src="../../../assets/landing-page/bullseye-arrow.svg" alt="">
         </div>
@@ -331,8 +331,51 @@
           </div>
         </div>
         <button>اشترك الآن</button>
+      </div> -->
+      <div *ngFor="let plan of plans" class="package">
+        <div class="icon-container">
+          <img src="../../../assets/landing-page/bullseye-arrow.svg" alt="">
+        </div>
+        <span id="title">{{ plan.name }}</span>
+        <span id="desc">{{ plan.description }}</span>
+        <div class="price">
+          <span id="one">${{ calculateTotalPrice(plan).toFixed(2) }}</span>
+          <span id="two">{{ plan.period_type === 'monthly' ? 'شهريا' : 'سنويا' }}</span>
+        </div>
+        <div class="countOfUser">
+          <div class="title">
+            <img src="../../../assets/landing-page/users.svg" alt="">
+            <span>عدد المستخدمين</span>
+          </div>
+          <input
+            type="range"
+            [min]="plan.min_users"
+            [max]="plan.max_users"
+            [(ngModel)]="plan.currentUsers"
+            class="slider"
+          />
+          <div class="numbers">
+            <span id="min">{{ plan.min_users }}</span>
+            <span id="current">{{ plan.currentUsers }}</span>
+            <span id="max">{{ plan.max_users }}</span>
+          </div>
+         
+        </div>
+        <div class="countOfWebsite">
+          <img src="../../../assets/landing-page/website.svg" alt="">
+          <select name="" id="count">
+            <option value="" disabled selected>عدد المواقع</option>
+            <option *ngFor="let user of [2, 3, 4]" [value]="user">{{ user }}</option>
+          </select>
+        </div>
+        <div class="features">
+          <div *ngFor="let feature of plan.features" [ngClass]="{'enable-feature': true, 'disable-feature': false}">
+            <img src="../../../assets/landing-page/Check.svg" alt="">
+            <span>{{ feature.name }}</span>
+          </div>
+        </div>
+        <button (click)="subscribeNow(plan)">اشترك الآن</button>
       </div>
-      
         
     </div>
    </div>

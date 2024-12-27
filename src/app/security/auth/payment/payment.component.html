@@ -1,0 +1,87 @@
+<div class="landingbody">
+    <nav class="navbar navbar-expand-lg navbar-light  mx-0 w-100 navbar-home">
+        <a class="navbar-brand">
+            <img src="../../../assets/images/logo.png" alt="Logo" style="width: 100px;">
+        </a>
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#home">الرئيسية <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#packs">باقتنا</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">خدماتنا</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#partners">شركائنا</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="/about">من نحن</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="section1">
+        <div class="info-container">
+            <div class="info-label">
+              <strong>الوصف:</strong> <span>{{ description }}</span>
+            </div>
+            <div class="info-label">
+              <strong>عدد المستخدمين:</strong> <span>{{ countUser }}</span>
+            </div>
+            <div class="info-label">
+              <strong>عدد المواقع:</strong> <span>{{ countWebsite }}</span>
+            </div>
+            <div class="info-label">
+              <strong>المبلغ (SAR):</strong> <span>{{ amt }}</span>
+            </div>
+          </div>
+        <div id="card-sdk-id" style="
+        height: 100%;
+        margin-top: 8rem;
+        justify-content: center;
+        display: flex;
+        align-items: baseline;
+    "></div>
+        <button (click)="submitPayment()"  class="btn loginbt" style="
+        margin: 4rem;
+    ">Submit Payment</button>
+    </div>
+  
+    <footer
+        class="d-flex flex-column flex-lg-row justify-content-between align-items-center py-3 my-4 border-top footer text-center text-lg-left">
+        <div class="col-md-4 d-flex flex-column align-items-center align-items-lg-start order-2 order-lg-1">
+            <div class="d-flex justify-content-center align-self-center mt-2 social-icons">
+
+                <a class="me-3"><i class="fab fa-facebook-f"></i></a>
+                <a class="me-3"><i class="fab fa-instagram"></i></a>
+                <a class="me-3"><i class="fab fa-x-twitter"></i></a>
+                <a class="me-3"><i class="fab fa-pinterest"></i></a>
+
+            </div>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-center mb-3 mb-md-0 order-3 order-lg-2">
+            <li class="nav-item"><a class="nav-link px-2 text-muted " routerLink="/home">الرئيسية</a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-muted " routerLink="/about">من نحن</a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-muted ">خدماتنا</a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-muted ">شركائنا</a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-muted ">باقتنا</a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-muted ">تواصل معنا</a></li>
+            <p class="mb-0 ">© كل الحقوق محفوظة لموقع Advert</p>
+
+        </ul>
+
+        <div class="col-md-4 d-flex flex-column align-items-center align-items-lg-end order-1 order-lg-3 mb-3 mb-lg-0">
+            <a href="/" class="d-flex align-items-center mb-3 me-md-auto text-dark text-decoration-none">
+                <img src="../../../assets/images/logo.png" alt="Logo" style="width: 100px;">
+            </a>
+        </div>
+    </footer>
+</div>
