@@ -23,7 +23,7 @@ export class AuthService {
         `${this.baseUrl}/login`,
         { email, password },
         { withCredentials: true }
-      )
+      )  
       .pipe(
         tap((response) => {
           if (response.token) {
